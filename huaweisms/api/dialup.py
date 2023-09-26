@@ -64,13 +64,18 @@ def set_mode(ctx, NetworkMode='00', NetworkBand='3FFFFFFF', LTEBand='7FFFFFFFFFF
     headers = {
         "__RequestVerificationToken": ctx.token,
     }
-    url = "{}/dialup/mobile-dataswitch".format(ctx.api_base_url)
+    url = "{}/net/net-mode".format(ctx.api_base_url)
     #print(data)
     return huaweisms.api.common.post_to_url(url, data, ctx, additional_headers=headers)
+
+def get_net_mode(ctx):
+    url = "{}/net/net-mode".format(ctx.api_base_url)
+    return huaweisms.api.common.get_from_url(url, ctx)
 
 def profiles(ctx):
     # type: (huaweisms.api.common.ApiCtx) -> ...
     url = "{}/dialup/profiles".format(ctx.api_base_url)
     return huaweisms.api.common.get_from_url(url, ctx)
+
 
 
